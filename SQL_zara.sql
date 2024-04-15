@@ -16,6 +16,9 @@ SELECT TOP (1000) [Product_ID]
       ,[section]
   FROM [zara].[dbo].[zara_sales]
 
+  -- CREATED A DATABASE zara
+  -- Imported the csv dataset and named it as zara_sales
+      
   SELECT *
   FROM zara_sales
 
@@ -28,86 +31,92 @@ SELECT TOP (1000) [Product_ID]
   FROM zara_sales
  
  --Total Sales Volume of Regular Items
-  Select Sum(Sales_Volume) as Total_Sales_Volume_Regular
-  From zara_sales
-  Where Promotion = '0'
+  SELECT Sum(Sales_Volume) AS Total_Sales_Volume_Regular
+  FROM zara_sales
+  WHERE Promotion = '0'
   
   --Total Sales Volume of Discounted Items
-  Select Sum(Sales_Volume) as Total_Sales_Volume_Discounted
-  From zara_sales
-  Where Promotion = '1'
+  SELECT Sum(Sales_Volume) AS Total_Sales_Volume_Discounted
+  FROM zara_sales
+  WHERE Promotion = '1'
   
   --Total Revenue of Regular Items
-  Select Sum(Sales_Volume * price) as Total_Revenue_Regular
-  From zara_sales
-  Where Promotion = '0'
+  SELECT Sum(Sales_Volume * price) AS Total_Revenue_Regular
+  FROM zara_sales
+  WHERE Promotion = '0'
 
  --Total Revenue of Discounted Items
-  Select Sum(Sales_Volume * price) as Total_Revenue_Discounted
-  From zara_sales
-  Where Promotion = '1'
-
+  SELECT Sum(Sales_Volume * price) AS Total_Revenue_Discounted
+  FROM zara_sales
+  WHERE Promotion = '1'
 
   --Revenue by Gender
-  Select Section, Sum(Sales_Volume * price) as Revenue_Gender
-  From zara_sales
-  Group by Section
-  Order by Revenue_Gender Asc
+  SELECT Section, Sum(Sales_Volume * price) as Revenue_Gender
+  FROM zara_sales
+  GROUP BY Section
+  ORDER BY Revenue_Gender Asc
 
   --Sales Volume by Gender
-  Select Section, Sum(Sales_Volume * price) as Sales_Gender
-  From zara_sales
-  Group by Section
-  Order by Sales_Gender Asc
-
+  SELECT Section, Sum(Sales_Volume * price) as Sales_Gender
+  FROM zara_sales
+  GROUP BY Section
+  ORDER BY Sales_Gender Asc
 
   --Type of clothing that generated the highest revenue
-  Select Count(terms), terms, sum(Sales_Volume * price) as revenue
-  From zara_sales
-  Group by terms
+  SELECT COUNT(terms), terms, sum(Sales_Volume * price) AS revenue
+  FROM zara_sales
+  GROUP BY terms
   ORDER BY revenue DESC
  
  --Highest Sales Volume (Man and Woman Section) not on sale
- Select Promotion, Seasonal, Sales_Volume, name, section
- From zara_sales
- where Promotion = '0'
- order by Sales_Volume desc
+ SELECT Promotion, Seasonal, Sales_Volume, name, section
+ FROM zara_sales
+ WHERE Promotion = '0'
+ ORDER BY Sales_Volume DESC
 
  --Highest Sales Volume (Man and Woman Section) on sale
-  Select Seasonal, Sales_Volume, name
- From zara_sales
- where Promotion = '1' and section = 'MAN'
- order by Sales_Volume desc
+ SELECT Seasonal, Sales_Volume, name
+ FROM zara_sales
+ WHERE Promotion = '1' AND section = 'MAN'
+ ORDER BY Sales_Volume DESC
 
- Select sum(Sales_Volume * price) as totalrev_regular_male
- From zara_sales
- where Promotion = '0' and section = 'MAN'
+ --Total Revenue for regular items (Men's section)
+ SELECT SUM(Sales_Volume * price) AS totalrev_regular_male
+ FROM zara_sales
+ WHERE Promotion = '0' AND section = 'MAN'
 
- Select sum(Sales_Volume * price) as totalrev_regular_woman
- From zara_sales
- where Promotion = '0' and section = 'WOMAN'
+ --Total Revenue for regular items (Women's section)
+ SELECT SUM(Sales_Volume * price) AS totalrev_regular_woman
+ FROM zara_sales
+ WHERE Promotion = '0' AND section = 'WOMAN'
 
- Select sum(Sales_Volume * price) as totalrev_disc_male
- From zara_sales
- where Promotion = '1' and section = 'MAN'
+ --Total Revenue for Discounted items (Men's section)
+ SELECT SUM(Sales_Volume * price) AS totalrev_disc_male
+ FROM zara_sales
+ WHERE Promotion = '1' AND section = 'MAN'
 
- Select sum(Sales_Volume * price) as totalrev_disc_woman
- From zara_sales
- where Promotion = '1' and section = 'WOMAN'
+ --Total Revenue for Discounted items (Women's section)
+ SELECT SUM(Sales_Volume * price) AS totalrev_disc_woman
+ FROM zara_sales
+ WHERE Promotion = '1' AND section = 'WOMAN'
 
- Select sum(Sales_Volume) as totalsalesvol_man
- From zara_sales
- where Promotion = '0' and section = 'MAN'
+ --Total Sales Volume for Regular items (Men's section)
+ SELECT SUM(Sales_Volume) AS totalsalesvol_man
+ FROM zara_sales
+ WHERE Promotion = '0' AND section = 'MAN'
 
- Select sum(Sales_Volume) as totalsalesvol_woman
- From zara_sales
- where Promotion = '0' and section = 'WOMAN'
+ --Total Sales Volume for Regular items (Women's section)
+ SELECT SUM(Sales_Volume) AS totalsalesvol_woman
+ FROM zara_sales
+ WHERE Promotion = '0' AND section = 'WOMAN'
 
- Select sum(Sales_Volume) as totalsalesvol_disc_man
- From zara_sales
- where Promotion = '1' and section = 'MAN'
+ --Total Sales Volume for Discounted items (Men's section)
+ SELECT SUM(Sales_Volume) AS totalsalesvol_disc_man
+ FROM zara_sales
+ WHERE Promotion = '1' AND section = 'MAN'
 
-  Select sum(Sales_Volume) as totalsalesvol_disc_woman
- From zara_sales
- where Promotion = '1' and section = 'WOMAN'
+ --Total Sales Volume for Discounted items (Women's section)
+ SELECT SUM(Sales_Volume) AS totalsalesvol_disc_woman
+ FROM zara_sales
+ WHERE Promotion = '1' AND section = 'WOMAN'
  
