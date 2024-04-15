@@ -1,3 +1,7 @@
+-- CREATED zara database
+-- Imported the csv dataset and named it as zara_sales
+
+
 SELECT TOP (1000) [Product_ID]
       ,[Product_Position]
       ,[Promotion]
@@ -16,9 +20,7 @@ SELECT TOP (1000) [Product_ID]
       ,[section]
   FROM [zara].[dbo].[zara_sales]
 
-  -- CREATED A DATABASE zara
-  -- Imported the csv dataset and named it as zara_sales
-      
+  --Viewed and analyzed the dataset
   SELECT *
   FROM zara_sales
 
