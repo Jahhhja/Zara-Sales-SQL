@@ -128,4 +128,14 @@ SELECT TOP (1000) [Product_ID]
  SELECT SUM(Sales_Volume) AS totalsalesvol_disc_woman
  FROM zara_sales
  WHERE Promotion = '1' AND section = 'WOMAN'
+
+  --Men's regular items: Lowest and highest sales volume, cheapest and expensive price
+  SELECT MIN(Sales_Volume) AS lowest_mr, MAX(Sales_Volume) AS highest_mr, MIN(price) AS cheap_mr, MAX(price) AS expensive_mr
+  FROM zara_sales
+  WHERE Promotion = '0' AND section = 'MAN'
+
+ --Women's regular items: Lowest and highest sales volume, cheapest and expensive price
+  SELECT MIN(Sales_Volume) AS lowest_wr, MAX(Sales_Volume) AS highest_wr, MIN(price) AS cheap_wr, MAX(price) AS expensive_wr
+  FROM zara_sales
+  WHERE Promotion = '0' AND section = 'WOMAN'
  
