@@ -20,10 +20,17 @@ SELECT TOP (1000) [Product_ID]
       ,[section]
   FROM [zara].[dbo].[zara_sales]
 
-  --Viewed and analyzed the dataset
+  --View and check the dataset
   SELECT *
   FROM zara_sales
 
+  --Check for duplicates
+  SELECT Product_ID, COUNT(Product_ID) AS ID_duplicate
+  FROM zara_sales
+  GROUP BY Product_ID
+
+  --PERFORMING AGGREGATE FUNCTIONS
+      
   --Total Sales Volume
   SELECT SUM(Sales_Volume) AS Total_Sales_Volume
   FROM zara_sales
